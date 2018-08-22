@@ -6,7 +6,6 @@ function renderCoffee(coffee) {
     html += '<h2 class="container my-auto">' + coffee.name + '</h2>';
     html += '<p class="my-auto">' + coffee.roast + '</p>';
     html += '</div>';
-
     return html;
 }
 function renderCoffees(coffees) {
@@ -47,18 +46,21 @@ var coffees = [
 var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
-
+// var search = document.querySelector('#coffees'); //search bar
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+// var searchBar = document.getElementById('search');
+// searchBar.addEventListener('onkeyup', search());
 
-function name() {
-    // input.preventDefault(); // don't submit the form, we just want to update the data
-    var name = document.querySelector('#coffees').value;
+function search() {
+    var input = document.getElementsByTagName('#mySearch');
+    var coffeeName = tbody.getElementsByTagName('');
     var filteredCoffees = [];
-    coffees.forEach(function(coffee) {
-        if (coffee.name === name) {
-            filteredCoffees.push(coffee);
+    coffees.forEach(function(name) {
+        if (coffees.name === input) {
+            filteredCoffees.push(coffees.name);
         }
     });
-        tbody.innerHTML = renderCoffees(coffees);}
+    tbody.innerHTML = renderCoffees(filteredCoffees);
+}
