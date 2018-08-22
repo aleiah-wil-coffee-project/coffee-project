@@ -54,13 +54,12 @@ submitButton.addEventListener('click', updateCoffees);
 // searchBar.addEventListener('onkeyup', search());
 
 function search() {
-    var input = document.getElementsByTagName('#mySearch');
-    var coffeeName = tbody.getElementsByTagName('');
+    var input = document.getElementById('mySearch');
     var filteredCoffees = [];
-    coffees.forEach(function(name) {
-        if (coffees.name === input) {
-            filteredCoffees.push(coffees.name);
-        }
+    coffees.forEach(function(coffee) {
+        // for(var i = 0; i < coffees.length; i++){
+        if (coffee.name.toLowerCase().indexOf(input.value.toLowerCase()) > -1)
+        filteredCoffees.push(coffee);
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
