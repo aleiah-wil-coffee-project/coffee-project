@@ -1,15 +1,14 @@
 "use strict";
 
 function renderCoffee(coffee) {
-    var html = '<div class="coffee col-6 border-black float-left d-flex justify-content block">';
+    var html = '<div class="coffee float-left d-flex justify-content">';
     // html += '<div>' + coffee.id + '</div>';
-    html += '<h2 class="float-left my-auto">' + coffee.name + '</h2>';
-    html += '<p class="float-left my-auto d-flex justify-content">' + coffee.roast + '</p>';
+    html += '<h2 class="container my-auto">' + coffee.name + '</h2>';
+    html += '<p class="my-auto">' + coffee.roast + '</p>';
     html += '</div>';
 
     return html;
 }
-
 function renderCoffees(coffees) {
     var html = '';
     for(var i = 0; i < coffees.length - 1; i++) {
@@ -17,7 +16,6 @@ function renderCoffees(coffees) {
     }
     return html;
 }
-
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     var selectedRoast = roastSelection.value;
@@ -29,7 +27,6 @@ function updateCoffees(e) {
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
-
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 var coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
@@ -47,7 +44,6 @@ var coffees = [
     {id: 13, name: 'Italian', roast: 'dark'},
     {id: 14, name: 'French', roast: 'dark'}
 ];
-
 var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
@@ -55,3 +51,15 @@ var roastSelection = document.querySelector('#roast-selection');
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+
+function search() {
+    var input = document.getElementById("inputCoffee");
+    var filter = input.value.toUpperCase();
+    var h2;
+    for (var i = 0; i < tbody.length; i++) {
+        h2 = tbody.getElementsByTagName("h2");
+        if (h2.toUpperCase().indexOf(filter) > -1) {
+            h2.style.display;
+        }
+        }
+}

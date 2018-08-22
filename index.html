@@ -21,14 +21,13 @@
             <option value="2">medium</option>
             <option value="3">dark</option>
         </select>
-
         <div>
             <br>
             <label for="coffees" class="font-weight-bold">Coffee Name</label>
-            <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+            <input class="form-control mr-sm-2" id="inputCoffee" type="text" placeholder="" aria-label="Search" onkeyup="search()">
         </div>
         <br>
-        <button class="btn btn-primary my-2 my-sm-0 btn-block bg-color-primary" type="submit">Submit</button>
+        <button class="btn btn-primary my-2 my-sm-0 btn-block bg-color-primary" type="submit" id="submit">Submit</button>
         <!--<input id="submit" type="submit" />-->
         <hr>
         <div class="text-center"><h3>Add a Coffee</h3></div>
@@ -40,7 +39,6 @@
             <option value="2">medium</option>
             <option value="3">dark</option>
         </select>
-
         <div>
             <br>
             <label for="coffees" class="font-weight-bold">Name</label>
@@ -49,7 +47,7 @@
         <br>
         <button class="btn btn-primary my-2 my-sm-0 btn-block bg-color-primary" type="submit">Submit</button>
     </form></div>
-<div class="col-6">
+<div class="col-fit">
     <table>
         <!--<thead>-->
             <!--<tr>-->
@@ -58,7 +56,7 @@
                 <!--<th>ROAST</th>-->
             <!--</tr>-->
         <!--</thead>-->
-        <tbody id="coffees"></tbody>
+            <tbody id="coffees"></tbody>
     </table>
 </div>
     <script src="main.js"></script>
