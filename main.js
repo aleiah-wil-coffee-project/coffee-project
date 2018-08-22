@@ -52,14 +52,13 @@ tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
 
-function search() {
-    var input = document.getElementById("inputCoffee");
-    var filter = input.value.toUpperCase();
-    var h2;
-    for (var i = 0; i < tbody.length; i++) {
-        h2 = tbody.getElementsByTagName("h2");
-        if (h2.toUpperCase().indexOf(filter) > -1) {
-            h2.style.display;
+function name() {
+    // input.preventDefault(); // don't submit the form, we just want to update the data
+    var name = document.querySelector('#coffees').value;
+    var filteredCoffees = [];
+    coffees.forEach(function(coffee) {
+        if (coffee.name === name) {
+            filteredCoffees.push(coffee);
         }
-        }
-}
+    });
+        tbody.innerHTML = renderCoffees(coffees);}
