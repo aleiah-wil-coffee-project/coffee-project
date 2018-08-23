@@ -10,11 +10,13 @@ function renderCoffee(coffee) {
 }
 function renderCoffees(coffees) {
     var html = '';
-    for(var i = 0; i < coffees.length ; i++) {
+    for(var i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
 }
+// var e = document.getElementById('roast-selection');
+// var strUser = e.options[]
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     var selectedRoast = roastSelection.value;
@@ -48,23 +50,33 @@ var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
 // var search = document.querySelector('#coffees'); //search bar
 tbody.innerHTML = renderCoffees(coffees);
-
 submitButton.addEventListener('click', updateCoffees);
-
-
-
-
 // var searchBar = document.getElementById('search');
 // searchBar.addEventListener('onkeyup', search());
 
 function searchCoffee() {
-    var i, filter,input;
-    // input = document.getElementById('mySearch');
-    filter = document.getElementById('mySearch').value.toLowerCase();
-
+    var i, filter, roastSelect;
+    var filteredRoast = [];
     var filteredCoffees = [];
+    filter = document.getElementById('mySearch').value.toLowerCase();
+    roastSelect = document.getElementById('roast-selection').value;
 
     for (i = 0; i < coffees.length; i++) {
+        var coffee = coffees[i];
+        // console.log(i);
+        // console.log(input);
+        console.log(filter);
+        // if (coffee.name.toLowerCase().indexOf(filter)> -1){
+        if (coffee.roast === roastSelect ){
+            console.log(coffee.name);
+            filteredRoast.push(coffee);
+        }
+
+    }
+
+    // input = document.getElementById('mySearch');
+
+        for (i = 0; i < filteredRoast.length; i++) {
         var coffee = coffees[i];
         // console.log(i);
         // console.log(input);
@@ -75,8 +87,7 @@ function searchCoffee() {
             filteredCoffees.push(coffee);
         }
 
-    }
-    tbody.innerHTML = renderCoffees(filteredCoffees);
+    } tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
 //     var input = document.querySelector('#mySearch');
@@ -102,6 +113,5 @@ function searchCoffee() {
 // //     //
 // //     //     //         filteredCoffees.push(coffee);
 // //         }});
-
 document.getElementById("mySearch").addEventListener("keyup", searchCoffee);
-
+document.getElementById('roast-selection').addEventListener('click', searchCoffee);
