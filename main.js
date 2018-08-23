@@ -50,16 +50,54 @@ var roastSelection = document.querySelector('#roast-selection');
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+
+
+
+
 // var searchBar = document.getElementById('search');
 // searchBar.addEventListener('onkeyup', search());
 
-function search() {
-    var input = document.getElementById('mySearch');
+function searchCoffee() {
+    var i, filter,input;
+    input = document.getElementById('mySearch');
+    filter = input.value.toLowerCase();
+
     var filteredCoffees = [];
-    coffees.forEach(function(coffee) {
-        // for(var i = 0; i < coffees.length; i++){
-        if (coffee.name.toLowerCase().indexOf(input.value.toLowerCase()) > -1)
-        filteredCoffees.push(coffee);
-    });
+
+    for (i = 0; i < coffees.length; i++) {
+        var coffee = coffees[i];
+        console.log(i);
+        console.log(input);
+        console.log(filter);
+        // if (coffee.name.toLowerCase().indexOf(filter)> -1){
+        if (coffee.name.toLowerCase().search(filter) != -1){
+            filteredCoffees.push(coffee);
+        }
+
+    }
+
+//     var input = document.querySelector('#mySearch');
+//         var indexOfLetter = coffees.name.toLowerCase().indexOf(input.value.toLowerCase());
+// //         if (coffees.name === input){
+// //             return coffees[i].name;
+// //         };
+// //
+// //     });
+// coffees.forEach(function(){
+//     if (indexOfLetter > -1) {
+//
+// //             if (indexOfLetter > -1) {
+//
+//                     filteredCoffees.push(coffee.name);
+//
+//
+//
+// //     // }
+// //     // // coffees.forEach(function(coffee) {
+// //     //     var indexOfLetter = coffee.name.toLowerCase().indexOf(input.value.toLowerCase());
+// //     //     // filteredCoffees.push(coffee.find(input));
+// //     //
+// //     //     //         filteredCoffees.push(coffee);
+// //         }});
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
